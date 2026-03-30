@@ -149,3 +149,49 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+/* -- Details / Pillar Animation -- */
+document.querySelectorAll('.pillar').forEach(details => {
+    const summary = details.querySelector('summary');
+    const body = details.querySelector('.pillar-body');
+
+    summary.addEventListener('click', e => {
+        e.preventDefault();
+
+        if (details.open) {
+            // Initiate close animation
+            body.style.maxHeight = '0px';
+            body.style.opacity = '0';
+            body.style.paddingBottom = '0px';
+
+            // Wait for transition before removing open attribute
+            setTimeout(() => {
+                details.open = false;
+                body.style = '';
+            }, 400); // matches the 0.4s transition
+        } else {
+            // Open actions
+            details.open = true;
+
+            // Force initial state instantly (bypassing transition because it just came from display:none)
+            body.style.transition = 'none';
+            body.style.maxHeight = '0px';
+            body.style.opacity = '0';
+            body.style.paddingBottom = '0px';
+
+            // Trigger reflow to lock in the 0 values
+            void body.offsetHeight;
+
+            // Re-enable CSS transitions and trigger animation to target state
+            body.style.transition = '';
+            body.style.maxHeight = '300px';
+            body.style.opacity = '1';
+            body.style.paddingBottom = '1.5rem';
+
+            // Clean up inline styles after animation finishes
+            setTimeout(() => {
+                body.style = '';
+            }, 400);
+        }
+    });
+});
