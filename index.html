@@ -7,6 +7,17 @@
     <title>Ameya Kulkarni | Builder's Notebook</title>
     <meta name="description"
         content="Ameya Kulkarni is an Android engineer focused on product-driven architecture, real-time systems, and anti-bloat design.">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ameya Kulkarni | Android Engineer & Product Builder">
+    <meta property="og:description"
+        content="Systems that ship fast, stay minimal, and respect the user's attention. Native Android architecture, real-time sync, and offline P2P.">
+    <meta property="og:url" content="https://ameyakulkarni.dev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ameya Kulkarni | Android Engineer & Product Builder">
+    <meta name="twitter:description" content="Systems that ship fast, stay minimal, and respect the user's attention.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,8 +34,8 @@
     <!-- Mobile Nav Overlay -->
     <div class="mobile-nav" id="mobileNav">
         <a href="#about" onclick="closeMobileNav()">About</a>
-        <a href="#systems" onclick="closeMobileNav()">Systems</a>
-        <a href="#timeline" onclick="closeMobileNav()">Log</a>
+        <a href="#systems" onclick="closeMobileNav()">Projects</a>
+        <a href="#timeline" onclick="closeMobileNav()">Experience</a>
         <a href="#thoughts" onclick="closeMobileNav()">Thinking</a>
         <a href="#contact" onclick="closeMobileNav()">Connect</a>
     </div>
@@ -35,8 +46,8 @@
             <div class="nav-logo">A.K.</div>
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#systems">Systems</a>
-                <a href="#timeline">Log</a>
+                <a href="#systems">Projects</a>
+                <a href="#timeline">Experience</a>
                 <a href="#thoughts">Thinking</a>
                 <a href="#contact">Connect</a>
             </div>
@@ -60,15 +71,18 @@
                         <span class="line"><span class="line-inner gsap-name-line italic">Kulkarni.</span></span>
                     </h1>
                     <p class="hero-descriptor gsap-hero">
-                        I engineer systems that ship fast, stay minimal, and respect the user's attention. Currently
-                        focused on
-                        real-time Android architecture, offline peer-to-peer communication, and anti-bloat product
-                        design.
+                        I engineer systems that ship fast, stay minimal, and respect the user's attention.
                     </p>
-                    <a href="mailto:ameyakulkarni2023@gmail.com" class="hero-cta gsap-hero">
-                        <span>Get In Touch</span>
-                        <span class="arrow-icon">→</span>
-                    </a>
+                    <div class="hero-cta-row gsap-hero">
+                        <a href="mailto:ameyakulkarni2023@gmail.com" class="hero-cta">
+                            <span>Get In Touch</span>
+                            <span class="arrow-icon">→</span>
+                        </a>
+                        <a href="https://github.com/amEya911" target="_blank" class="hero-cta-secondary">
+                            <span>GitHub</span>
+                            <span class="arrow-icon">→</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="hero-photo-wrap gsap-hero">
                     <img src="assets/media/image.jpeg" alt="Ameya Kulkarni" class="hero-photo" loading="eager">
@@ -80,8 +94,7 @@
         <div class="hero-bottom">
             <div class="hero-status gsap-hero">
                 <span class="dot"></span>
-                <span>Building <a href="https://chattodo.co" target="_blank"
-                        style="text-decoration:underline; text-underline-offset:3px; color:var(--accent);">chattodo.co</a>,
+                <span>Building <a href="https://chattodo.co" target="_blank" class="status-link">chattodo.co</a>,
                     solo product
                     engineering at a stealth startup.</span>
             </div>
@@ -94,9 +107,8 @@
         <div class="container layout-grid">
             <div>
                 <h2 class="gsap-el">The Operating<br><i class="serif">System.</i></h2>
-                <p class="gsap-el"
-                    style="font-size: 1.15rem; color: var(--text-secondary); max-width: 640px; margin-bottom: 1.5rem;">
-                    I build software the way I think about products, with
+                <p class="about-intro gsap-el">
+                    I build software the way I think about products - with
                     <span class="anno">
                         structural conviction
                         <span class="anno-tip">MVI architectures, event-driven sync, delta-time game loops: precision
@@ -104,8 +116,8 @@
                     </span>,
                     ruthless scope reduction, and a deep bias for shipping.
                 </p>
-                <p class="gsap-el" style="font-size: 1rem; color: var(--text-muted); max-width: 640px;">
-                    At Preseed, I learned that product isn't about adding features, it's about
+                <p class="about-detail gsap-el">
+                    At Preseed, I learned that product isn't about adding features - it's about
                     <span class="anno">
                         removing decisions
                         <span class="anno-tip">"Every extra feature is a decision point. Fewer decisions, less noise." -
@@ -131,15 +143,15 @@
                 <div class="quick-stats gsap-el">
                     <div class="stat-item">
                         <div class="stat-value">4+</div>
-                        <div class="stat-label">Systems Built End-to-End</div>
+                        <div class="stat-label">Systems built end-to-end</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">100K+</div>
-                        <div class="stat-label">Users Scaled For</div>
+                        <div class="stat-label">Architecture Scaled To</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">8.73</div>
-                        <div class="stat-label">CGPA</div>
+                        <div class="stat-value">Single</div>
+                        <div class="stat-label">Source of Truth (Architecture)</div>
                     </div>
                 </div>
             </div>
@@ -155,57 +167,11 @@
         </div>
     </section>
 
-    <!-- EXECUTION LAYERS -->
-    <section id="pillars">
-        <div class="container layout-grid">
-            <div>
-                <h2 class="gsap-el">Execution<br><i class="serif">Layers.</i></h2>
-                <details class="pillar gsap-el" open>
-                    <summary>01 / Native Android Architecture</summary>
-                    <div class="pillar-body">
-                        Deep focus on Jetpack Compose, state hoisting, and Event Driven Architecture. Building apps that
-                        feel instantaneous,
-                        not loading screens that feel tolerable. Native isn't about OS access; it's about
-                        unapologetically fluid experiences.
-                    </div>
-                </details>
-                <details class="pillar gsap-el">
-                    <summary>02 / Zero-to-One Product Engineering</summary>
-                    <div class="pillar-body">
-                        Taking abstract concepts and shipping them as complete, deployable products: from database
-                        schemas to pixel-level UI, solo. Experienced in making hard product cuts that keep systems lean
-                        and user intent clear.
-                    </div>
-                </details>
-                <details class="pillar gsap-el">
-                    <summary>03 / High‑Concurrency Real‑Time Sync</summary>
-                    <div class="pillar-body">
-                        Event-driven backends using Firebase with structural optimizations for massive synchronized
-                        writes. Real-time means real-time: no manual refreshes, no dropped packets.
-                    </div>
-                </details>
-                <details class="pillar gsap-el">
-                    <summary>04 / Offline‑First P2P Systems</summary>
-                    <div class="pillar-body">
-                        Designing communication protocols that operate at the hardware layer: Bluetooth RFCOMM sockets.
-                        Infrastructure-independent systems that work anywhere two devices exist.
-                    </div>
-                </details>
-            </div>
-            <div class="gsap-el-delay">
-                <div class="sys-note">
-                    // EXPAND.THREADS<br><br>
-                    Click to unfold<br>competency layers.
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- COMPILED SYSTEMS (PROJECTS) -->
     <section id="systems">
         <div class="container">
             <h2 class="gsap-el">Compiled<br><i class="serif">Systems.</i></h2>
-            <p class="mono gsap-el" style="color: var(--text-dim); margin-bottom: 0.5rem;">Zero-to-one executions.
+            <p class="section-subtitle mono gsap-el">Zero-to-one executions.
                 Thesis / Execution / Impact.</p>
 
             <div class="sys-cards">
@@ -235,10 +201,6 @@
 
                 <!-- Vanish / BlinkChat -->
                 <a href="https://github.com/amEya911/BlinkChat" target="_blank" class="sys-card gsap-card">
-                    <!-- <div class="sys-card-media">
-                        <img src="assets/media/image.jpeg" alt="Vanish Preview" loading="lazy">
-                        <span class="media-badge">Preview</span>
-                    </div> -->
                     <div class="sys-card-body">
                         <div class="sys-card-header">
                             <div class="sys-card-name">Vanish</div>
@@ -260,10 +222,11 @@
                     </div>
                 </a>
 
-                <!-- NearChat (wide — portrait video) -->
+                <!-- NearChat (wide - portrait video) -->
                 <a href="https://github.com/amEya911/NearChat" target="_blank" class="sys-card sys-card-wide gsap-card">
                     <div class="sys-card-video">
-                        <video src="assets/media/nearchat-video.mp4" autoplay muted loop playsinline></video>
+                        <video src="assets/media/nearchat-video.mp4" autoplay muted loop playsinline
+                            preload="none"></video>
                         <span class="media-badge">▶ Demo</span>
                     </div>
                     <div class="sys-card-body">
@@ -288,10 +251,11 @@
                     </div>
                 </a>
 
-                <!-- Two Cars (wide — portrait video) -->
+                <!-- Two Cars (wide - portrait video) -->
                 <a href="https://github.com/amEya911/TwoCars" target="_blank" class="sys-card sys-card-wide gsap-card">
                     <div class="sys-card-video">
-                        <video src="assets/media/two-cars-video.mp4" autoplay muted loop playsinline></video>
+                        <video src="assets/media/two-cars-video.mp4" autoplay muted loop playsinline
+                            preload="none"></video>
                         <span class="media-badge">▶ Demo</span>
                     </div>
                     <div class="sys-card-body">
@@ -343,7 +307,7 @@
                         performance to handle 100,000+ active users.</p>
                     <div class="tl-insight">
                         <strong>The Ambiguity:</strong>
-                        Scaling event-driven architecture isn't about faster queries, it's about predicting bottlenecks
+                        Scaling event-driven architecture isn't about faster queries - it's about predicting bottlenecks
                         before they saturate. Redesigning this solo taught structural prudence over "add-more-servers"
                         mentality.
                     </div>
@@ -399,12 +363,13 @@
     <!-- CONTACT -->
     <footer id="contact">
         <div class="container">
-            <h2 class="gsap-el serif" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">Initiate<br><i>Handshake.</i></h2>
+            <h2 class="gsap-el serif contact-heading">Let's<br><i>Connect.</i></h2>
+            <p class="contact-subtext gsap-el">Open to opportunities in native Android engineering, product-driven
+                teams, and zero-to-one builds.</p>
             <div class="contact-row gsap-el">
                 <a href="mailto:ameyakulkarni2023@gmail.com">Email</a>
                 <a href="https://github.com/amEya911" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/ameya-kulkarni-/" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">Resume</a>
             </div>
             <div class="footer-end gsap-el">
                 <span>© 2026 Ameya Kulkarni</span>
@@ -414,8 +379,8 @@
     </footer>
 
     <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 </body>
 

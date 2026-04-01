@@ -28,7 +28,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    /* smooth scroll removed — JS handles it to avoid conflicts */
 }
 
 body {
@@ -41,7 +41,9 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Scroll Progress */
+/* ============================================
+   SCROLL PROGRESS
+   ============================================ */
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -53,7 +55,9 @@ body {
     transition: none;
 }
 
-/* Grid BG */
+/* ============================================
+   GRID BACKGROUND
+   ============================================ */
 body::before {
     content: '';
     position: fixed;
@@ -67,19 +71,28 @@ body::before {
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 100%);
 }
 
+/* ============================================
+   AMBIENT CURSOR
+   ============================================ */
 .ambient-cursor {
     position: fixed;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(232, 168, 73, 0.12) 0%, rgba(255, 255, 255, 0.04) 30%, transparent 65%);
+    background: radial-gradient(circle, rgba(232, 168, 73, 0.18) 0%, rgba(255, 255, 255, 0.06) 30%, transparent 65%);
     border-radius: 50%;
     pointer-events: none;
-    transform: translate(-50%, -50%);
     z-index: 1;
     mix-blend-mode: screen;
-    will-change: left, top;
+    will-change: transform;
+    transform: translate(-50%, -50%);
+    /* Start off-screen until JS positions it */
+    left: -300px;
+    top: -300px;
 }
 
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
 h1,
 h2,
 h3,
@@ -110,6 +123,9 @@ a {
     color: #fff;
 }
 
+/* ============================================
+   LAYOUT
+   ============================================ */
 .container {
     max-width: 1140px;
     margin: 0 auto;
@@ -130,25 +146,27 @@ a {
 }
 
 section {
-    padding: 7rem 0;
+    padding: 5rem 0;
     position: relative;
     z-index: 2;
     border-bottom: 1px solid var(--border-subtle);
 }
 
-/* Section Dividers */
+/* Section Dividers — slightly more visible */
 section::after {
     content: '';
     position: absolute;
     bottom: -1px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
+    width: 200px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
 }
 
-/* NAV */
+/* ============================================
+   NAVIGATION
+   ============================================ */
 nav {
     position: fixed;
     top: 0;
@@ -209,6 +227,15 @@ nav {
 }
 
 .nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Active nav link */
+.nav-links a.active {
+    color: var(--accent);
+}
+
+.nav-links a.active::after {
     width: 100%;
 }
 
@@ -275,7 +302,7 @@ nav {
     transform: translateX(8px);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .nav-links {
         display: none;
     }
@@ -285,6 +312,9 @@ nav {
     }
 }
 
+/* ============================================
+   HERO
+   ============================================ */
 #hero {
     min-height: 100vh;
     display: flex;
@@ -380,9 +410,17 @@ nav {
 .hero-descriptor {
     max-width: 480px;
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
+}
+
+/* Hero CTA Row */
+.hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .hero-cta {
@@ -413,6 +451,37 @@ nav {
 }
 
 .hero-cta:hover .arrow-icon {
+    transform: translateX(4px);
+}
+
+/* Secondary CTA */
+.hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 6px;
+    transition: all 0.4s var(--ease-out-expo);
+    background: transparent;
+    cursor: pointer;
+}
+
+.hero-cta-secondary:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-main);
+}
+
+.hero-cta-secondary .arrow-icon {
+    transition: transform 0.3s var(--ease-out-expo);
+}
+
+.hero-cta-secondary:hover .arrow-icon {
     transform: translateX(4px);
 }
 
@@ -474,6 +543,7 @@ nav {
     }
 }
 
+/* Hero Bottom */
 .hero-bottom {
     position: relative;
     margin: 3rem auto 0;
@@ -495,13 +565,18 @@ nav {
     max-width: 400px;
 }
 
+.status-link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: var(--accent);
+}
+
 .hero-scroll-hint {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--text-muted);
-    /* Brighter than dim */
     animation: float 3s ease-in-out infinite;
 }
 
@@ -523,6 +598,27 @@ nav {
         align-items: flex-start;
         gap: 1rem;
     }
+}
+
+/* ============================================
+   ABOUT SECTION — Named Classes
+   ============================================ */
+.about-intro {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin-bottom: 1.5rem;
+}
+
+.about-detail {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 640px;
+}
+
+.section-subtitle {
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
 }
 
 /* Annotation */
@@ -564,14 +660,13 @@ nav {
     transform: translateX(-50%) translateY(0);
 }
 
-/* Sys Note */
+/* Sys Note — improved contrast */
 .sys-note {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: var(--text-muted);
-    /* Made brighter */
+    color: var(--text-secondary);
     padding-left: 1rem;
-    border-left: 1px solid var(--border-subtle);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
     position: sticky;
     top: 110px;
     line-height: 1.7;
@@ -589,11 +684,13 @@ nav {
     }
 }
 
-/* Quick Stats */
+/* ============================================
+   QUICK STATS — improved visibility
+   ============================================ */
 .quick-stats {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 2rem;
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-subtle);
@@ -615,11 +712,13 @@ nav {
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--text-dim);
+    color: var(--text-muted);
     margin-top: 0.25rem;
 }
 
-/* Tech Stack Tags */
+/* ============================================
+   TECH STACK TAGS
+   ============================================ */
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
@@ -640,76 +739,12 @@ nav {
 .tech-tag:hover {
     border-color: var(--accent);
     color: var(--accent);
+    background: var(--accent-dim);
 }
 
-/* Pillars */
-.pillar {
-    margin-bottom: 0.75rem;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.pillar:hover {
-    border-color: var(--border-hover);
-    box-shadow: 0 0 0 1px var(--border-hover);
-}
-
-.pillar summary {
-    padding: 1.25rem 1.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    color: var(--text-secondary);
-    transition: color 0.2s;
-}
-
-.pillar summary:hover {
-    color: var(--accent);
-}
-
-.pillar summary::-webkit-details-marker {
-    display: none;
-}
-
-.pillar summary::after {
-    content: '+';
-    color: var(--text-dim);
-    font-size: 1.1rem;
-    transition: transform 0.3s var(--ease-out-expo);
-}
-
-.pillar[open] summary::after {
-    transform: rotate(45deg);
-    color: var(--accent);
-}
-
-.pillar-body {
-    padding: 0 1.5rem 0;
-    /* no bottom padding initially */
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-    line-height: 1.65;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.4s var(--ease-out-expo), opacity 0.3s, padding 0.4s;
-}
-
-.pillar[open] .pillar-body {
-    max-height: 300px;
-    opacity: 1;
-    padding-bottom: 1.5rem;
-}
-
-/* Timeline */
+/* ============================================
+   TIMELINE
+   ============================================ */
 .tl-node {
     position: relative;
     padding-left: 2rem;
@@ -778,7 +813,9 @@ nav {
     font-weight: 500;
 }
 
-/* Project Cards */
+/* ============================================
+   PROJECT CARDS
+   ============================================ */
 .sys-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -808,7 +845,7 @@ nav {
 .sys-card:hover {
     transform: translateY(-6px);
     border-color: var(--accent-dim);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-dim);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--accent-dim), 0 0 30px rgba(232, 168, 73, 0.08);
 }
 
 /* Image-only media (landscape) */
@@ -863,7 +900,6 @@ nav {
     overflow: hidden;
     position: relative;
     background: #000;
-    /* Darker background for video */
     border-right: 1px solid var(--border-subtle);
     flex-shrink: 0;
     display: flex;
@@ -876,7 +912,6 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* Prevents any cropping */
     transition: transform 0.6s var(--ease-out-expo);
     filter: brightness(0.9);
     border-radius: 6px;
@@ -995,7 +1030,9 @@ nav {
     margin-bottom: 0.2rem;
 }
 
-/* Fragments */
+/* ============================================
+   THINKING FRAGMENTS
+   ============================================ */
 .frag-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1011,11 +1048,13 @@ nav {
 .frag {
     padding: 1.25rem 1.5rem;
     border-left: 2px solid var(--border-subtle);
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, background 0.3s;
+    border-radius: 0 6px 6px 0;
 }
 
 .frag:hover {
     border-left-color: var(--accent);
+    background: rgba(232, 168, 73, 0.02);
 }
 
 .frag h4 {
@@ -1035,10 +1074,23 @@ nav {
     line-height: 1.6;
 }
 
-/* Contact */
+/* ============================================
+   CONTACT / FOOTER
+   ============================================ */
 #contact {
-    padding: 6rem 0 5rem;
+    padding: 5rem 0 4rem;
     border-bottom: none;
+}
+
+.contact-heading {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.contact-subtext {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 500px;
+    margin-top: 0.5rem;
 }
 
 .contact-row {
@@ -1064,7 +1116,7 @@ nav {
 }
 
 .footer-end {
-    margin-top: 6rem;
+    margin-top: 5rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border-subtle);
     display: flex;
