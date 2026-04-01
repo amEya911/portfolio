@@ -77,7 +77,7 @@ function initAmbientCursor() {
     function animate() {
         currentX += (targetX - currentX) * 0.12;
         currentY += (targetY - currentY) * 0.12;
-        cursor.style.transform = `translate(${currentX - 300}px, ${currentY - 300}px)`;
+        cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
         requestAnimationFrame(animate);
     }
     animate();
