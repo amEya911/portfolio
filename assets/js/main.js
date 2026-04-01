@@ -19,6 +19,7 @@ function initPortfolio() {
 
     initScrollProgress();
     initAmbientCursor();
+    initSpaceGrid();
     initHeroAnimations();
     initScrollReveals();
     initMagneticHovers();
@@ -82,6 +83,108 @@ function initAmbientCursor() {
     }
     animate();
 }
+
+/* -- Dynamic Space-Time Grid -- */
+function initSpaceGrid() {
+    const canvas = document.getElementById('spaceGrid');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    let width, height, cols, rows;
+    const cellSize = 48;
+    let points = [];
+    
+    let targetX = -1000, targetY = -1000;
+    let currentX = -1000, currentY = -1000;
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        const dpr = window.devicePixelRatio || 1;
+        
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+        
+        cols = Math.ceil(width / cellSize) + 2;
+        rows = Math.ceil(height / cellSize) + 2;
+        
+        points = [];
+        for (let i = 0; i <= rows; i++) {
+            let row = [];
+            for (let j = 0; j <= cols; j++) {
+                row.push({ baseX: (j - 1) * cellSize, baseY: (i - 1) * cellSize, x: 0, y: 0 });
+            }
+            points.push(row);
+        }
+    }
+    
+    window.addEventListener('resize', resize);
+    resize();
+    
+    if (!isTouchDevice) {
+        document.addEventListener('mousemove', e => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+        }, { passive: true });
+    }
+    
+    function render() {
+        currentX += (targetX - currentX) * 0.12;
+        currentY += (targetY - currentY) * 0.12;
+        
+        ctx.clearRect(0, 0, width, height);
+        
+        const gravityRadius = 400;
+        const gravityStrength = 0.6;
+        
+        // Displace points
+        for (let i = 0; i <= rows; i++) {
+            for (let j = 0; j <= cols; j++) {
+                let pt = points[i][j];
+                let dx = currentX - pt.baseX;
+                let dy = currentY - pt.baseY;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                
+                pt.x = pt.baseX;
+                pt.y = pt.baseY;
+                
+                if (dist < gravityRadius && !isTouchDevice) {
+                    let pull = Math.pow((gravityRadius - dist) / gravityRadius, 2) * gravityStrength;
+                    pt.x += dx * pull;
+                    pt.y += dy * pull;
+                }
+            }
+        }
+        
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.035)';
+        ctx.lineWidth = 1;
+        
+        // Draw horizontals
+        for (let i = 0; i <= rows; i++) {
+            ctx.moveTo(points[i][0].x, points[i][0].y);
+            for (let j = 1; j <= cols; j++) {
+                ctx.lineTo(points[i][j].x, points[i][j].y);
+            }
+        }
+        
+        // Draw verticals
+        for (let j = 0; j <= cols; j++) {
+            ctx.moveTo(points[0][j].x, points[0][j].y);
+            for (let i = 1; i <= rows; i++) {
+                ctx.lineTo(points[i][j].x, points[i][j].y);
+            }
+        }
+        
+        ctx.stroke();
+        requestAnimationFrame(render);
+    }
+    
+    render();
+}
+
 
 /* -- Hero Entrance Timeline -- */
 function initHeroAnimations() {

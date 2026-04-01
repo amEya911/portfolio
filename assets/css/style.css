@@ -54,15 +54,11 @@ body {
 /* ============================================
    GRID BACKGROUND
    ============================================ */
-body::before {
-    content: '';
+#spaceGrid {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 1;
-    background-size: 48px 48px;
-    background-image: linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
     mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 100%);
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 100%);
 }
