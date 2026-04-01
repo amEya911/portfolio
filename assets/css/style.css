@@ -27,8 +27,6 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     background-color: var(--bg-base);
     color: var(--text-main);
