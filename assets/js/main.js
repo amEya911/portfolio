@@ -105,6 +105,8 @@ function initSpaceGrid() {
         
         canvas.width = width * dpr;
         canvas.height = height * dpr;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
         ctx.scale(dpr, dpr);
         
         cols = Math.ceil(width / cellSize) + 2;
