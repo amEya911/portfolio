@@ -27,24 +27,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Firebase Analytics -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-analytics.js";
-
-        // TODO: Replace with your actual Firebase config object from the Firebase Console
-        const firebaseConfig = {
-            apiKey: "AIzaSyArHoAvn928iNrxywOAcuOuoG-QJnrKJE0",
-            authDomain: "portfolio-6de44.firebaseapp.com",
-            projectId: "portfolio-6de44",
-            storageBucket: "portfolio-6de44.firebasestorage.app",
-            messagingSenderId: "125914680069",
-            appId: "1:125914680069:web:5b683b54c0d0b764d1456c",
-            measurementId: "G-03JZF47V7R"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-    </script>
+    <script type="module" src="assets/js/firebase-init.js"></script>
 </head>
 
 <body>
