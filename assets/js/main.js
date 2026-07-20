@@ -27,6 +27,8 @@ function initPortfolio() {
     initSmoothScroll();
     initActiveNavTracking();
     initVideoLazyLoad();
+    initCardToggles();
+    initLightbox();
 }
 
 /* -- Mobile Nav -- */
@@ -272,4 +274,97 @@ function initVideoLazyLoad() {
     });
 
     videos.forEach(video => videoObserver.observe(video));
+}
+
+/* -- Project Card Views Toggle -- */
+function initCardToggles() {
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const card = btn.closest('.sys-card');
+            const target = btn.dataset.target;
+            
+            // Toggle active class on buttons
+            card.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const detailsView = card.querySelector('.card-details-view');
+            const mediaView = card.querySelector('.card-media-view');
+            
+            if (target === 'details') {
+                if (mediaView) mediaView.style.display = 'none';
+                if (detailsView) {
+                    detailsView.style.display = 'flex';
+                }
+            } else {
+                if (detailsView) detailsView.style.display = 'none';
+                if (mediaView) {
+                    mediaView.style.display = 'block';
+                }
+            }
+            
+            // Refresh ScrollTrigger as elements size might adjust
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
+        });
+    });
+    
+    document.querySelectorAll('.sys-card-screenshot').forEach(screenshot => {
+        screenshot.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const img = screenshot.querySelector('img');
+            const src = img.getAttribute('src');
+            const alt = img.getAttribute('alt') || "Project Screenshot";
+            
+            if (window.openLightbox) {
+                window.openLightbox(src, alt);
+            }
+        });
+    });
+}
+
+/* -- Lightbox Modal functions -- */
+function initLightbox() {
+    const modal = document.getElementById('lightboxModal');
+    const closeBtn = document.getElementById('lightboxClose');
+    const img = document.getElementById('lightboxImg');
+    const caption = document.getElementById('lightboxCaption');
+    
+    if (!modal || !closeBtn || !img || !caption) return;
+    
+    window.openLightbox = function(src, alt) {
+        img.src = src;
+        img.alt = alt;
+        caption.textContent = alt;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+    
+    function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            img.src = '';
+        }, 400); // clear source after transition
+    }
+    
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
 }
