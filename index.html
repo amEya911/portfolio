@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -31,8 +31,7 @@
 </head>
 
 <body>
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <div class="ambient-cursor" aria-hidden="true"></div>
+
 
     <!-- Mobile Nav Overlay -->
     <div class="mobile-nav" id="mobileNav">
@@ -66,7 +65,6 @@
             <div class="hero-content">
                 <div>
                     <div class="hero-label gsap-hero">
-                        <span class="dot"></span>
                         <span>Android Engineer / Product Builder</span>
                     </div>
                     <h1 class="hero-name" id="heroName">
@@ -77,31 +75,28 @@
                         I engineer systems that ship fast, stay minimal, and respect the user's attention.
                     </p>
                     <div class="hero-cta-row gsap-hero">
-                        <a href="mailto:ameyakulkarni2023@gmail.com" class="hero-cta">
-                            <span>Get In Touch</span>
-                            <span class="arrow-icon">→</span>
-                        </a>
+                        <a href="mailto:ameyakulkarni2023@gmail.com" class="hero-link">Get in touch</a>
+                        <span class="hero-link-sep">/</span>
                         <a href="https://github.com/amEya911" target="_blank" rel="noopener noreferrer"
-                            class="hero-cta-secondary">
-                            <span>GitHub</span>
-                            <span class="arrow-icon">→</span>
-                        </a>
+                            class="hero-link">GitHub</a>
+                        <span class="hero-link-sep">/</span>
+                        <a href="assets/Ameya_Kulkarni_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                            class="hero-link">Resume</a>
                     </div>
                 </div>
                 <div class="hero-photo-wrap gsap-hero">
                     <img src="assets/media/image1.png" alt="Ameya Kulkarni" class="hero-photo" loading="eager">
-                    <span class="hero-photo-tag">Mumbai, India</span>
+                    <span class="hero-photo-tag">Toronto, Canada</span>
                 </div>
             </div>
         </div>
 
         <div class="hero-bottom">
             <div class="hero-status gsap-hero">
-                <span class="dot"></span>
                 <span>Shipped <a href="https://chattodo.co" target="_blank" rel="noopener noreferrer"
-                        class="status-link">chattodo.co</a> — a zero-config chat→task tool, engineered solo from architecture to launch.</span>
+                        class="status-link">chattodo.co</a>, a zero-config chat-to-task tool, engineered solo from
+                    architecture to launch.</span>
             </div>
-            <div class="hero-scroll-hint gsap-hero">Scroll ↓</div>
         </div>
     </section>
 
@@ -111,21 +106,10 @@
             <div>
                 <h2 class="gsap-el">The Operating<br><i class="serif">System.</i></h2>
                 <p class="about-intro gsap-el">
-                    I build software the way I think about products - with
-                    <span class="anno">
-                        structural conviction
-                        <span class="anno-tip">MVI architectures, event-driven sync, delta-time game loops: precision
-                            over convenience.</span>
-                    </span>,
-                    ruthless scope reduction, and a deep bias for shipping.
+                    I obsess over architecture and scope. If it doesn't need to exist, it shouldn't.
                 </p>
                 <p class="about-detail gsap-el">
-                    At Preseed, I learned that product isn't about adding features - it's about
-                    <span class="anno">
-                        removing decisions
-                        <span class="anno-tip">"Every extra feature is a decision point. Fewer decisions, less noise." -
-                            chattodo.co</span>
-                    </span>.
+                    I've learned that product isn't about adding features, it's about removing decisions.
                     I work in Kotlin and Jetpack Compose, building everything from cloud-synced real-time apps to
                     fully offline Bluetooth communication systems. I care about the architecture beneath the interface.
                 </p>
@@ -149,19 +133,19 @@
                         <div class="stat-label">Systems built end-to-end</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">10M+</div>
-                        <div class="stat-label">LLM Tokens Audited</div>
+                        <div class="stat-value">0→1</div>
+                        <div class="stat-label">Solo Product Launches</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">Single</div>
-                        <div class="stat-label">Source of Truth (Architecture)</div>
+                        <div class="stat-value">0 Jank</div>
+                        <div class="stat-label">Smooth native rendering</div>
                     </div>
                 </div>
             </div>
             <div class="gsap-el-delay">
                 <div class="sys-note">
                     // SYS.NOTE<br><br>
-                    Location: India<br>
+                    Location: Toronto, Canada<br>
                     Pursuing: MI (Information Systems &amp; Design)<br>
                     University: University of Toronto<br>
                     Prior: B.E. Electronics &amp; CS, SIES GST<br>
@@ -380,21 +364,32 @@
             <div>
                 <h2 class="gsap-el">Runtime<br><i class="serif">Logs.</i></h2>
                 <div class="tl-node gsap-el">
-                    <div class="tl-meta">Edelweiss EAAA (CRE) | May 2026 – Jul 2026</div>
+                    <div class="tl-meta">Edelweiss, EAAA | May 2026 – July 2026</div>
                     <div class="tl-role">Business Transformation Intern</div>
-                    <p class="tl-desc">Authored SOPs from scratch for the Business Transformation team, defining structured workflows for cross-functional coordination. Participated in vendor onboarding calls, documented UAT processes, and contributed to SAP stabilisation efforts by coordinating with implementation partners.</p>
+                    <p class="tl-desc">Authored SOPs from scratch for the Business Transformation team, defining
+                        structured workflows for cross-functional coordination. Participated in vendor onboarding calls,
+                        documented UAT processes, and contributed to SAP stabilisation efforts by coordinating with
+                        implementation partners.</p>
                     <div class="tl-insight">
                         <strong>The Learning:</strong>
-                        Systems thinking isn't confined to code. Mapping vendor onboarding flows, writing UAT documentation, and stabilising ERP rollouts gave me a product management lens — understanding how technical decisions cascade into operational workflows, and how process design is itself a form of architecture.
+                        Systems thinking isn't confined to code. Mapping vendor onboarding flows, writing UAT
+                        documentation, and stabilising ERP rollouts gave me a product management lens: understanding how
+                        technical decisions cascade into operational workflows, and how process design is itself a form
+                        of architecture.
                     </div>
                 </div>
                 <div class="tl-node gsap-el">
-                    <div class="tl-meta">Mentorship under Nirbhay Pherwani | Oct 2025 – Feb 2026</div>
+                    <div class="tl-meta">Mentor: Nirbhay Pherwani | July 2025 – March 2026</div>
                     <div class="tl-role">Android Engineering Mentee</div>
-                    <p class="tl-desc">Mentored by Nirbhay Pherwani, Principal Engineer (Android) at ReachMobi, USA. Built Chattodo end-to-end as a deep engineering exercise — profiling performance bottlenecks, iterating on software architecture, and shipping a clean, stable product. Absorbed entire technical domains overnight and returned with working implementations.</p>
+                    <p class="tl-desc">Mentored by Nirbhay Pherwani, Principal Engineer (Android) at ReachMobi, USA.
+                        Built Chattodo end-to-end as a deep engineering exercise: profiling performance bottlenecks,
+                        iterating on software architecture, and shipping a clean, stable product. Absorbed entire
+                        technical domains overnight and returned with working implementations.</p>
                     <div class="tl-insight">
                         <strong>The Learning:</strong>
-                        Working with a principal-level engineer reshaped how I approach problems. Beyond code, I began thinking about user engagement measurement, ethical data structuring, onboarding design, and accessibility — the intersection of people, data, and systems that defines real product thinking.
+                        Working with a principal-level engineer reshaped how I approach problems. Beyond code, I began
+                        thinking about user engagement measurement, ethical data structuring, onboarding design, and
+                        accessibility, the intersection of people, data, and systems that defines real product thinking.
                     </div>
                 </div>
             </div>
@@ -416,19 +411,27 @@
                 <div class="frag-grid">
                     <div class="frag gsap-el">
                         <h4>01 / Subtract, Don't Add</h4>
-                        <p>The best product decision is usually a removal. Every feature is a decision forced on the user. I'd rather ship something that does one thing with zero friction than something that does ten things with a tutorial.</p>
+                        <p>The best product decision is usually a removal. Every feature is a decision forced on the
+                            user. I'd rather ship something that does one thing with zero friction than something that
+                            does ten things with a tutorial.</p>
                     </div>
                     <div class="frag gsap-el">
                         <h4>02 / Systems Over Screens</h4>
-                        <p>A beautiful UI on a fragile architecture is a liability. I think in data flows, state machines, and failure modes first — the interface is the last layer, not the first. Information design starts at the schema, not the mockup.</p>
+                        <p>A beautiful UI on a fragile architecture is a liability. I think in data flows, state
+                            machines, and failure modes first. The interface is the last layer, not the first.
+                            Information design starts at the schema, not the mockup.</p>
                     </div>
                     <div class="frag gsap-el">
                         <h4>03 / Bridge the Gap</h4>
-                        <p>The most interesting problems live between disciplines. Studying Information Systems &amp; Design at UofT after engineering taught me that the best builders speak both languages — the technical "how" and the human "why."</p>
+                        <p>The most interesting problems live between disciplines. Studying Information Systems &amp;
+                            Design at UofT after engineering taught me that the best builders speak both languages: the
+                            technical "how" and the human "why."</p>
                     </div>
                     <div class="frag gsap-el">
                         <h4>04 / Ship, Then Refine</h4>
-                        <p>Perfection is procrastination with better branding. I've learned more from shipping an imperfect product and watching real people use it than from any amount of whiteboard architecture. Feedback loops beat design docs.</p>
+                        <p>Perfection is procrastination with better branding. I've learned more from shipping an
+                            imperfect product and watching real people use it than from any amount of whiteboard
+                            architecture. Feedback loops beat design docs.</p>
                     </div>
                 </div>
             </div>
